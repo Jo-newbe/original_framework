@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM操作-appendTo方法</title>
+  <style>
+    .pp {
+      background-color: hotpink;
+    }
+  </style>
+</head>
+<body>
+  <div id="dd">    
+  </div>
+  <div id="dv">    
+  </div>
+  <!--<script src="jquery.js"></script>-->
+  <script src="itcast-0.1.0.js"></script>
+  <script>
+    // 1 选择器
+    // $( '<p>123</p>' ).appendTo( 'div' );
+    // 2 dom对象
+    //  $( '<p>123</p>' ).appendTo( document.querySelector( '#dd' ) );
+    //  3 dom数组
+    
+    $.fn.addClass = function ( className ) {
+      this.each( function ( i, elem ) {
+        elem.className += ' ' + className;
+      } );
+
+      return this;
+    };
+
+  var jq = $( '<p>123</p>' ).appendTo( [ document.querySelector( '#dd' ), document.querySelector( '#dv' ) ] )
+    .addClass( 'pp' );
+    console.log( jq );
+  </script>
+</body>
+</html>

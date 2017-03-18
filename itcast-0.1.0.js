@@ -160,6 +160,32 @@
     }
   } );
 
+  // DOM操作模块
+  itcast.fn.extend( {
+    appendTo: function ( target ) {
+      var that = this; // 缓存this引用的对象 
+      var ret = [],    // 存储所有分配出去的节点
+          node;        // 临时存储要被分配的节点
+      // 1: 统一target类型。为itcast对象
+      target = itcast( target );
+      // 2: 遍历target
+      target.each( function (i, elem ){
+      // 3: 遍历itcast对象-appendTo方法的调用者
+        that.each( function (){
+          // 如果遍历到的是第一目标DOM元素，不需要拷贝node源节点；否则，就需要拷贝node
+                // 同时要拷贝其后代节点，因此要使用深拷贝的方式
+          // 然后给目标元素追加上述得到新节点
+          // this -> 遍历that 得到的当前元素
+          node = i === 0 ? this : this.cloneNode( true );
+          ret.push( node );
+          elem.appendChild( node );
+        } );
+      } );
+      // 4：实现链式编程
+      return itcast( ret );
+    }
+  } );
+
   if ( typeof define === 'function' ){
     define( function (){
       return itcast;
