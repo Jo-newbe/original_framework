@@ -188,6 +188,31 @@
       source = itcast( source );
       source.appendTo( this );
       return this;
+    },
+    prependTo: function ( target ){
+      var ret = [],
+          that = this,
+          node,
+          firstChild; // 存储目标元素的第一个子节点
+
+      target = itcast( target );
+      target.each( function ( i, elem ) {
+        // 获取当前目标元素第一个子节点
+        firstChild = elem.firstChild;
+        that.each( function (){
+          node = i === 0 ? this : this.cloneNode( true );
+          ret.push( node );
+          // 将得到的新节点，在firstChild前边给elem添加子节点
+          elem.insertBefore( node, firstChild );
+        } );
+      } );
+
+      return itcast( ret );
+    },
+    prepend: function ( source ) {
+      source = itcast( source );
+      source.prependTo( this );
+      return this;
     }
   } );
 
