@@ -213,6 +213,24 @@
       source = itcast( source );
       source.prependTo( this );
       return this;
+    },
+    next: function () {
+      var ret = [];
+      this.each( function ( i, elem ) {
+        // var node = elem.nextSibling;
+        // while ( node ) {
+        //   if( node.nodeType === 1 ){
+        //     ret.push( node );
+        //     break;
+        //   }
+        //   node = node.nextSibling;
+        // }
+        while ( ( elem = elem.nextSibling ) && elem.nodeType !== 1 ){}
+        if ( elem != null ) {
+          ret.push( elem );
+        }
+      } );
+      return itcast( ret );
     }
   } );
 
