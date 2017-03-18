@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM操作-appendTo方法</title>
+  <style>
+    .dd {
+      background-color: hotpink;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <script src="itcast-0.1.0.js"></script>
+  <!--<script src="jquery.js"></script>-->
+  <script>
+     $.fn.addClass = function ( className ) {
+      this.each( function ( i, elem ) {
+        elem.className += ' ' + className;
+      } );
+
+      return this;
+    };
+ 
+    $( 'div' ).append( '<p>123</p>' ).addClass( 'dd' );
+  </script>
+</body>
+</html>

@@ -183,6 +183,11 @@
       } );
       // 4：实现链式编程
       return itcast( ret );
+    },
+    append: function ( source ) {
+      source = itcast( source );
+      source.appendTo( this );
+      return this;
     }
   } );
 
